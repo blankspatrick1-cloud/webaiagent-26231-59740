@@ -38,10 +38,41 @@ const ValueSection = () => {
               key={index}
               className="relative group"
             >
-              <div className="bg-card p-8 rounded-lg border border-border hover:border-primary/50 transition-all duration-300 h-full hover:glow-border">
-                <div className="mb-6 inline-block p-3 bg-primary/10 rounded-lg glow-border animate-float" 
+              {/* Pulse rings */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div 
+                  className="absolute w-20 h-20 border-2 border-primary/30 rounded-full animate-pulse-ring"
+                  style={{ animationDelay: `${index * 0.3}s` }}
+                />
+                <div 
+                  className="absolute w-20 h-20 border-2 border-primary/30 rounded-full animate-pulse-ring"
+                  style={{ animationDelay: `${index * 0.3 + 1}s` }}
+                />
+              </div>
+
+              <div className="bg-card p-8 rounded-lg border border-border hover:border-primary/50 transition-all duration-300 h-full hover:glow-border relative overflow-hidden">
+                {/* Scan line effect */}
+                <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-primary/10 to-transparent animate-scan" />
+                </div>
+
+                <div className="mb-6 inline-block p-3 bg-primary/10 rounded-lg glow-border animate-agent-bounce relative" 
                   style={{ animationDelay: `${index * 0.2}s` }}>
                   <feature.icon className="w-8 h-8 text-primary" />
+                  {/* Mini particles around icon */}
+                  {[...Array(3)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-1 h-1 bg-primary rounded-full animate-particle-float"
+                      style={{
+                        top: '50%',
+                        left: '50%',
+                        '--tx': `${Math.cos(i * 2.1) * 30}px`,
+                        '--ty': `${Math.sin(i * 2.1) * 30}px`,
+                        animationDelay: `${i * 0.3}s`,
+                      } as React.CSSProperties}
+                    />
+                  ))}
                 </div>
                 
                 <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>

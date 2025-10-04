@@ -98,11 +98,92 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes agent-move {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(100px, -50px) rotate(90deg);
+    }
+    50% {
+      transform: translate(200px, 0) rotate(180deg);
+    }
+    75% {
+      transform: translate(100px, 50px) rotate(270deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
+
+  @keyframes agent-bounce {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-30px) scale(1.1);
+    }
+  }
+
+  @keyframes particle-float {
+    0% {
+      transform: translate(0, 0) scale(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(var(--tx), var(--ty)) scale(1);
+      opacity: 0;
+    }
+  }
+
+  @keyframes scan-line {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
 
   .animate-glow-pulse {
     animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-agent-move {
+    animation: agent-move 10s linear infinite;
+  }
+
+  .animate-agent-bounce {
+    animation: agent-bounce 2s ease-in-out infinite;
+  }
+
+  .animate-particle-float {
+    animation: particle-float 3s ease-out infinite;
+  }
+
+  .animate-scan {
+    animation: scan-line 3s linear infinite;
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 2s ease-out infinite;
   }
 }

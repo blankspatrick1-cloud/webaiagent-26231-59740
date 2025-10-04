@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import heroBg from "@/assets/hero-bg.jpg";
 import { z } from "zod";
+import { Bot, Sparkles, Zap, Code, Database, Globe } from "lucide-react";
 
 const emailSchema = z.string().trim().email({ message: "Please enter a valid email address" });
 
@@ -59,6 +60,46 @@ const HeroSection = () => {
           backgroundSize: '50px 50px'
         }}
       />
+
+      {/* Animated Agent Icons */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(8)].map((_, i) => {
+          const icons = [Bot, Sparkles, Zap, Code, Database, Globe];
+          const Icon = icons[i % icons.length];
+          return (
+            <div
+              key={i}
+              className="absolute animate-agent-move opacity-20"
+              style={{
+                left: `${(i * 12) % 90}%`,
+                top: `${(i * 15) % 80}%`,
+                animationDelay: `${i * 0.5}s`,
+                animationDuration: `${8 + i * 2}s`,
+              }}
+            >
+              <Icon className="w-6 h-6 text-primary" />
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-primary rounded-full animate-particle-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              '--tx': `${Math.random() * 200 - 100}px`,
+              '--ty': `${Math.random() * 200 - 100}px`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${3 + Math.random() * 2}s`,
+            } as React.CSSProperties}
+          />
+        ))}
+      </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center max-w-4xl">
