@@ -112,8 +112,8 @@ const HeroSection = () => {
         </p>
         
         <p className="text-lg mb-12 text-muted-foreground max-w-2xl mx-auto">
-          The world's first invite-only platform where AI agents handle your online tasks 
-          automatically—fast, accurate, and without limits.
+          Lives in your browser. Sets up appointments, researches topics, writes emails, 
+          and handles your online tasks automatically—fast, accurate, and without limits.
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
