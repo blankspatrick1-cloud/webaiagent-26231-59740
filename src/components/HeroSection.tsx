@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/earth-hero.jpg";
 import { z } from "zod";
 import { Bot, Sparkles, Zap, Code, Database, Globe } from "lucide-react";
 
